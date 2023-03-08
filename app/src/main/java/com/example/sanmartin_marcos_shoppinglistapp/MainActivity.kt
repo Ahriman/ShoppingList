@@ -26,17 +26,7 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colors.background
                 ) {
-                    Scaffold(
-                        topBar = {
-                            TopAppBar(
-                                title = {
-                                    Text(text = "Shopping List")
-                                }//, modifier = Modifier.height(100.dp)
-                            )
-                        }
-                    ) { paddingValues ->
-                        MainScreen(Modifier.padding(paddingValues = paddingValues))
-                    }
+                    MainScreen()
                 }
 
             }
