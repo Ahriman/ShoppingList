@@ -15,13 +15,13 @@ fun ProductList(
     LazyColumn(modifier = modifier) {
         items(
             items = list,
-            key = { task -> task.id }
-        ) { task ->
+            key = { product -> product.id }
+        ) { product ->
             ProductItem(
-                taskName = task.label,
-                checked = task.checked,
-                onCheckedChange = { checked -> onChecked(task, checked) },
-                onClose = { onClose(task) }
+                productName = product.label,
+                checked = product.checked,
+                onCheckedChange = { checked -> onChecked(product, checked) },
+                onClose = { onClose(product) }
             )
         }
     }

@@ -14,7 +14,7 @@ import androidx.compose.ui.unit.dp
 
 @Composable
 fun ProductItem(
-    taskName: String,
+    productName: String,
     checked: Boolean,
     onCheckedChange: (Boolean) -> Unit,
     onClose: () -> Unit,
@@ -40,7 +40,7 @@ fun ProductItem(
                 modifier = Modifier
                     .weight(1f)
                     .padding(start = 16.dp),
-                text = taskName,
+                text = productName,
             )
             Checkbox(
                 checked = checked,
