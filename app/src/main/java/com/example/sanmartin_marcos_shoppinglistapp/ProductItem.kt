@@ -13,20 +13,18 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 
 @Composable
-fun ProductTaskItem(
+fun ProductItem(
     taskName: String,
     checked: Boolean,
     onCheckedChange: (Boolean) -> Unit,
     onClose: () -> Unit,
     modifier: Modifier = Modifier
 ) {
-//    var cardChecked by remember { mutableStateOf(checked) }
     Card(
         modifier = modifier
             .padding(horizontal = 18.dp, vertical = 15.dp)
             .clickable(onClick = {
                 // TODO: Activar CheckBox
-//                cardChecked = !cardChecked
             })
             .height(80.dp),
         shape = RoundedCornerShape(18.dp),
