@@ -4,7 +4,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 
-class ProductTask(
+class Product(
     val id: Int,
     val label: String,
     initialChecked: Boolean = false

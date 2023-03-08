@@ -6,18 +6,18 @@ import androidx.lifecycle.ViewModel
 
 class ProductViewModel : ViewModel() {
     private val _tasks = getProducts().toMutableStateList()
-    val tasks: List<ProductTask>
+    val tasks: List<Product>
         get() = _tasks
 
-    fun remove(item: ProductTask) {
+    fun remove(item: Product) {
         _tasks.remove(item)
     }
 
-    fun changeTaskChecked(item: ProductTask, checked: Boolean) =
+    fun changeTaskChecked(item: Product, checked: Boolean) =
         tasks.find { it.id == item.id }?.let { task ->
             task.checked = checked
         }
 
 }
 
-private fun getProducts() = List(30) { i -> ProductTask(i, "Producto $i") }
+private fun getProducts() = List(30) { i -> Product(i, "Producto $i") }

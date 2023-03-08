@@ -7,9 +7,9 @@ import androidx.compose.ui.Modifier
 
 @Composable
 fun ProductTasksList(
-    list: List<ProductTask>,
-    onCheckedTask: (ProductTask, Boolean) -> Unit,
-    onCloseTask: (ProductTask) -> Unit,
+    list: List<Product>,
+    onCheckedTask: (Product, Boolean) -> Unit,
+    onCloseTask: (Product) -> Unit,
     modifier: Modifier = Modifier
 ) {
     LazyColumn(modifier = modifier) {
