@@ -40,8 +40,4 @@ fun MainScreen(
         }
     }
 
-
-
-
-
 }
