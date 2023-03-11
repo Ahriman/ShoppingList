@@ -23,9 +23,6 @@ fun ProductItem(
     Card(
         modifier = modifier
             .padding(horizontal = 18.dp, vertical = 15.dp)
-            .clickable(onClick = {
-                // TODO: Activar CheckBox
-            })
             .height(80.dp),
         shape = RoundedCornerShape(18.dp),
         backgroundColor = Color(0xFF03dac5),

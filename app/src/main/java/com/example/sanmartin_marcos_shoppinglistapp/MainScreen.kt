@@ -1,13 +1,20 @@
 package com.example.sanmartin_marcos_shoppinglistapp
 
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.padding
-import androidx.compose.material.Scaffold
-import androidx.compose.material.Text
-import androidx.compose.material.TopAppBar
+import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.text.KeyboardActions
+import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.material.*
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.input.KeyboardCapitalization
+import androidx.compose.ui.text.input.KeyboardType
+import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 
 @Composable
@@ -29,12 +36,17 @@ fun MainScreen(
 
             ProductList(
                 list = productViewModel.products,
-                onChecked = { task, checked ->
-                    productViewModel.changeChecked(task, checked)
+                onChecked = { product, checked ->
+                    productViewModel.changeChecked(product, checked)
                 },
-                onClose = { task ->
-                    productViewModel.remove(task)
-                }, modifier = modifier
+                onClose = { product ->
+                    productViewModel.remove(product)
+                },
+                onAddProduct = { product ->
+                    productViewModel.addProduct(product)
+                },
+                modifier = modifier
+
             )
 
         }

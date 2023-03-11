@@ -3,9 +3,8 @@ package com.example.sanmartin_marcos_shoppinglistapp
 import androidx.compose.runtime.toMutableStateList
 import androidx.lifecycle.ViewModel
 
-
 class ProductViewModel : ViewModel() {
-    private val _products = getProducts().toMutableStateList()
+    private val _products = listOf<Product>().toMutableStateList()
     val products: List<Product>
         get() = _products
 
@@ -18,6 +17,10 @@ class ProductViewModel : ViewModel() {
             product.checked = checked
         }
 
+    fun addProduct(name: String){
+        if (name.isNotEmpty())
+            _products.add(Product(name))
+    }
+
 }
 
-private fun getProducts() = List(30) { i -> Product(i, "Producto $i") }
