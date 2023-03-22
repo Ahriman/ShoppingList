@@ -1,10 +1,10 @@
 package com.example.sanmartin_marcos_shoppinglistapp
 
-import androidx.compose.runtime.toMutableStateList
+import androidx.compose.runtime.mutableStateListOf
 import androidx.lifecycle.ViewModel
 
 class ProductViewModel : ViewModel() {
-    private val _products = listOf<Product>().toMutableStateList()
+    private val _products = mutableStateListOf<Product>()
     val products: List<Product>
         get() = _products
 
@@ -17,8 +17,8 @@ class ProductViewModel : ViewModel() {
             product.checked = checked
         }
 
-    fun addProduct(name: String){
-        if (name.isNotEmpty())
+    fun add(name: String){
+        if (name.isNotBlank())
             _products.add(Product(name))
     }
 

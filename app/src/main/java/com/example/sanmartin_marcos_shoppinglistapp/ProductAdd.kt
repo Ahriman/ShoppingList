@@ -15,20 +15,24 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.KeyboardCapitalization
 import androidx.compose.ui.unit.dp
 
 @Composable
 fun ProductAdd (
+    modifier: Modifier = Modifier,
     onAddProduct: (String) -> Unit,
-    modifier: Modifier = Modifier
 ) {
+    val focusManager = LocalFocusManager.current
+
     Row(
         modifier.padding(vertical = 16.dp, horizontal = 10.dp),
         horizontalArrangement = Arrangement.SpaceEvenly,
         verticalAlignment = Alignment.CenterVertically,
     ) {
+
         var productName by rememberSaveable { mutableStateOf("") }
 
         TextField(
@@ -44,6 +48,7 @@ fun ProductAdd (
         Button(onClick = {
             onAddProduct(productName)
             productName = ""
+//            focusManager.clearFocus() // Esconde el teclado
         }) {
             Text(text = stringResource(id = R.string.add_button))
         }

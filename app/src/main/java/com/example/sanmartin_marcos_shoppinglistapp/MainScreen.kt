@@ -25,7 +25,12 @@ fun MainScreen(
             )
         }
     ) { paddingValues ->
-        Column(modifier = Modifier.padding(paddingValues = paddingValues)) {
+
+        Column(modifier = modifier.padding(paddingValues = paddingValues)) {
+
+//            ProductAdd(onAddProduct = {
+//                productViewModel.add(it)
+//            })
 
             ProductList(
                 list = productViewModel.products,
@@ -35,14 +40,10 @@ fun MainScreen(
                 onClose = { product ->
                     productViewModel.remove(product)
                 },
-                onAddProduct = { product ->
-                    productViewModel.addProduct(product)
-                },
-                modifier = modifier
-
             )
 
         }
+
     }
 
 }

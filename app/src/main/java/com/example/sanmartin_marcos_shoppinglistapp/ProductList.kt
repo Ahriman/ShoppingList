@@ -8,6 +8,7 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.input.pointer.pointerInput
+import androidx.lifecycle.viewmodel.compose.viewModel
 
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
@@ -15,16 +16,19 @@ fun ProductList(
     list: List<Product>,
     onChecked: (Product, Boolean) -> Unit,
     onClose: (Product) -> Unit,
-    onAddProduct: (String) -> Unit,
     modifier: Modifier = Modifier
 ) {
 
-    ProductAdd(
-        onAddProduct = { name ->
-            onAddProduct(name)
-        })
+    val productViewModel: ProductViewModel = viewModel()
 
     LazyColumn(modifier = modifier) {
+
+        item {
+            ProductAdd(onAddProduct = {
+                productViewModel.add(it)
+            })
+        }
+
         items(
             items = list,
             key = { product -> product.id }
