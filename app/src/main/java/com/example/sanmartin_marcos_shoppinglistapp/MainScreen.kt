@@ -27,6 +27,10 @@ fun MainScreen(
     val showGoToTopButton by remember {
         derivedStateOf {
             listState.firstVisibleItemIndex > 0
+                    // De esta forma sirve para cualquier pantalla, al no meter un valor a mano para un dispositivo/tamaño
+                    && (listState.firstVisibleItemIndex + listState.layoutInfo.visibleItemsInfo.size <
+                    listState.layoutInfo.totalItemsCount)
+//                    || listState.isScrollInProgress
         }
     }
 
