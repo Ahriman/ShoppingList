@@ -2,19 +2,33 @@ package com.example.sanmartin_marcos_shoppinglistapp
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.lazy.rememberLazyListState
+import androidx.compose.material.FabPosition
 import androidx.compose.material.Scaffold
 import androidx.compose.material.Text
 import androidx.compose.material.TopAppBar
-import androidx.compose.runtime.Composable
+import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.lifecycle.viewmodel.compose.viewModel
+import kotlinx.coroutines.launch
 
 @Composable
 fun MainScreen(
     modifier: Modifier = Modifier,
-    productViewModel: ProductViewModel = viewModel()
+//    productViewModel: ProductViewModel = viewModel(),
 ) {
+
+    val productViewModel: ProductViewModel = viewModel()
+
+    val listState = rememberLazyListState()
+    val scope = rememberCoroutineScope()
+
+    val showGoToTopButton by remember {
+        derivedStateOf {
+            listState.firstVisibleItemIndex > 0
+        }
+    }
 
     Scaffold(
         topBar = {
@@ -23,14 +37,21 @@ fun MainScreen(
                     Text(text = stringResource(id = R.string.app_name))
                 }
             )
-        }
+        },
+        floatingActionButton = {
+            GoToTop(
+                goToTop = {
+                    scope.launch {
+                        listState.scrollToItem(0)
+                    }
+                },
+                visible = showGoToTopButton,
+            )
+        },
+        floatingActionButtonPosition = FabPosition.Center,
     ) { paddingValues ->
 
         Column(modifier = modifier.padding(paddingValues = paddingValues)) {
-
-//            ProductAdd(onAddProduct = {
-//                productViewModel.add(it)
-//            })
 
             ProductList(
                 list = productViewModel.products,
@@ -40,6 +61,7 @@ fun MainScreen(
                 onClose = { product ->
                     productViewModel.remove(product)
                 },
+                listState = listState
             )
 
         }

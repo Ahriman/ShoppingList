@@ -12,10 +12,13 @@ class ProductViewModel : ViewModel() {
         _products.remove(item)
     }
 
-    fun changeChecked(item: Product, checked: Boolean) =
-        products.find { it.id == item.id }?.let { product ->
-            product.checked = checked
-        }
+    fun changeChecked(item: Product, checked: Boolean) {
+        item.checked = checked
+    }
+//        products.find { it.id == item.id }?.let { product ->
+//            product.checked = checked
+//        }
+
 
     fun add(name: String){
         if (name.isNotBlank())
